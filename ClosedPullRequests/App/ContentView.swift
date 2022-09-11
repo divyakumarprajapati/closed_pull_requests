@@ -17,7 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading, content: {
-            TitleView(user: userRepo.user)
+            UserView(user: userRepo.user)
             List {
               Section {
                   ForEach(pullRequestRepo.pullRequests, id: \.self.id) { pullRequest in

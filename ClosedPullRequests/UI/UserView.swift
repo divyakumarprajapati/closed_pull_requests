@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TitleView: View {
+struct UserView: View {
     let user: User
     var body: some View {
         HStack {
@@ -39,8 +39,8 @@ struct TitleView: View {
     }
 }
 
-struct TitleView_Previews: PreviewProvider {
+struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        TitleView(user: User())
+        UserView(user: User())
     }
 }
