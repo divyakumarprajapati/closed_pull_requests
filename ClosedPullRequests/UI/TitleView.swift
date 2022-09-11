@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TitleView: View {
     let user: User
-    let userName: String
     var body: some View {
         HStack {
             Spacer()
@@ -17,7 +16,7 @@ struct TitleView: View {
                 .fill(Color.blue)
                 .frame(width: 50, height: 50)
             Spacer()
-            Text(userName)
+            Text(user.name)
             Spacer()
         }
     }
@@ -25,6 +24,6 @@ struct TitleView: View {
 
 struct TitleView_Previews: PreviewProvider {
     static var previews: some View {
-        TitleView(user: User(), userName: "")
+        TitleView(user: User())
     }
 }

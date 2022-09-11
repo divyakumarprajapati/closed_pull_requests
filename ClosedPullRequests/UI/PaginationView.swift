@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PaginationView: View {
+    let currentPage: Int;
+    let currentPageEntriesCount: Int
     let onNextPressed: () -> Void
     let onPreviousPressed: () -> Void
     
@@ -19,6 +21,7 @@ struct PaginationView: View {
                     Text("Previous")
                 }
             )
+            .disabled(currentPage == 1)
             .buttonStyle(BorderlessButtonStyle())
             Spacer()
             Button(action: {
@@ -27,6 +30,7 @@ struct PaginationView: View {
                     Text("Next")
                 }
             )
+            .disabled(currentPageEntriesCount == 0)
             .buttonStyle(BorderlessButtonStyle())
         }
     }
@@ -34,10 +38,10 @@ struct PaginationView: View {
 
 struct PaginationView_Previews: PreviewProvider {
     static var previews: some View {
-        PaginationView {
-            print("djdj")
-        } onPreviousPressed: {
-            print("dhdhdh")
-        }
+        PaginationView(currentPage: 1, currentPageEntriesCount: 0, onNextPressed: {
+            print("Next Pressed")
+        }, onPreviousPressed: {
+            print("Previous Pressed")
+        })
     }
 }

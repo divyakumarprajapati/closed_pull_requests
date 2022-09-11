@@ -10,7 +10,7 @@ import SwiftUI
 class UserRepo: ObservableObject {
     @Published var user: User = User()
     func fetchUser(userName: String) {
-        guard let url = URL(string: "https://api.github.com/\(userName)") else {
+        guard let url = URL(string: "https://api.github.com/users/\(userName)") else {
             return
         }
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
