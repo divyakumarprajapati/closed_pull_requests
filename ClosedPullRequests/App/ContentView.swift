@@ -8,31 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    let perPage: Int
+    let userName: String
+    let repoName: String
     @StateObject var pullRequestRepo = PullRequestRepo()
+    @StateObject var userRepo = UserRepo()
     @State var page = 1
-    var perPage = 10
     
     var body: some View {
         List {
-            TitleView()
+            TitleView(user: userRepo.user, userName: userName)
             ForEach(pullRequestRepo.pullRequests, id: \.self.id) { pullRequest in
                 PullRequestView(pullRequest: pullRequest)
             }
             PaginationView(onNextPressed: {
                 page += 1
-                pullRequestRepo.fetchPullRequests(page: page, perPage: perPage)
+                pullRequestRepo.fetchPullRequests(userName: userName, repoName: repoName, page: page, perPage: perPage)
             }, onPreviousPressed: {
                 page -= 1
-                pullRequestRepo.fetchPullRequests(page: page, perPage: perPage)
+                pullRequestRepo.fetchPullRequests(userName: userName, repoName: repoName, page: page, perPage: perPage)
             })
         }.onAppear {
-            pullRequestRepo.fetchPullRequests(page: page, perPage: perPage)
+            pullRequestRepo.fetchPullRequests(userName: userName, repoName: repoName, page: page, perPage: perPage)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(perPage: 0, userName: "", repoName: "")
     }
 }

@@ -9,8 +9,8 @@ import SwiftUI
 
 class PullRequestRepo: ObservableObject {
     @Published var pullRequests: [PullRequest] = []
-    func fetchPullRequests(page: Int, perPage: Int) {
-        guard let url = URL(string: "https://api.github.com/repos/apple/swift/pulls?page=\(page)&per_page=\(perPage)") else {
+    func fetchPullRequests(userName: String, repoName: String, page: Int, perPage: Int) {
+        guard let url = URL(string: "https://api.github.com/repos/\(userName)/\(repoName)/pulls?page=\(page)&per_page=\(perPage)&state=closed") else {
             return
         }
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in

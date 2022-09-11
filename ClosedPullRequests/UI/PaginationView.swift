@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PaginationView: View {
-    var onNextPressed: () -> Void
-    var onPreviousPressed: () -> Void
+    let onNextPressed: () -> Void
+    let onPreviousPressed: () -> Void
     
     var body: some View {
         HStack {

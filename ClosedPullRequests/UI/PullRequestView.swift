@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PullRequestView: View {
-    var pullRequest: PullRequest
+    let pullRequest: PullRequest
     var body: some View {
         HStack {
             Text(pullRequest.title)
@@ -24,7 +24,7 @@ struct PullRequestView: View {
 }
 
 struct PullRequestView_Previews: PreviewProvider {
-    static let pullRequest = PullRequest(id: 1, title: "Pull Request", createdAt: "11/05/2022", closedAt: "11/05/2022")
+    static let pullRequest = PullRequest(id: 1, title: "Pull Request", createdAt: "11/05/2022", closedAt: "11/05/2022", user: User())
     static var previews: some View {
         PullRequestView(pullRequest: pullRequest)
     }
