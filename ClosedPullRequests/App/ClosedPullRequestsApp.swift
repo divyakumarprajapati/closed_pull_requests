@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct closed_pull_requestsApp: App {
+struct ClosedPullRequestsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
