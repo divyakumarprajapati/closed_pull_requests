@@ -19,11 +19,31 @@ struct ContentView: View {
         VStack(alignment: HorizontalAlignment.leading, content: {
             TitleView(user: userRepo.user)
             List {
-                ForEach(pullRequestRepo.pullRequests, id: \.self.id) { pullRequest in
-                PullRequestView(pullRequest: pullRequest)
-                }
+              Section {
+                  ForEach(pullRequestRepo.pullRequests, id: \.self.id) { pullRequest in
+                     PullRequestView(pullRequest: pullRequest)
+                  }
+              } header: {
+                  HStack {
+                      Text("Closed PR")
+                          .font(.headline)
+                          .fontWeight(.semibold)
+                          .foregroundColor(Color.black)
+                          .frame(minWidth: 0, maxWidth: .infinity)
+                      Text("Created At")
+                          .font(.headline)
+                          .fontWeight(.semibold)
+                          .foregroundColor(Color.black)
+                          .frame(minWidth: 0, maxWidth: .infinity)
+                      Text("Closed At")
+                          .font(.headline)
+                          .fontWeight(.semibold)
+                          .foregroundColor(Color.black)
+                          .frame(minWidth: 0, maxWidth: .infinity)
+                  }
+              }
             }
-            .listStyle(PlainListStyle())
+            .listStyle(.inset)
             PaginationView(currentPage: self.currentPage, currentPageEntriesCount: pullRequestRepo.pullRequests.count, onNextPressed: {
                 self.currentPage += 1
                 pullRequestRepo.fetchPullRequests(userName: self.userName, repoName: self.repoName, page: self.currentPage, perPage: self.perPage)
