@@ -12,14 +12,17 @@ struct PullRequestView: View {
     var body: some View {
         HStack {
             Text(pullRequest.title)
-            Text(pullRequest.createdAt)
-            Text(pullRequest.closedAt)
+            Text(formatDate(date: pullRequest.createdAt))
+            Text(formatDate(date: pullRequest.closedAt))
         }
     }
-    func formatDate(date: Date) -> String {
+    func formatDate(date: String) -> String {
         let dateFormator = DateFormatter()
-        dateFormator.dateFormat = "DD/MM/YYYY"
-        return dateFormator.string(from: date)
+        dateFormator.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        guard let dates = dateFormator.date(from: date) else { return Date.now.ISO8601Format() }
+        let newDateFormator = DateFormatter()
+        newDateFormator.dateFormat = "dd-MM-yyyy"
+        return newDateFormator.string(from: dates)
     }
 }
 
