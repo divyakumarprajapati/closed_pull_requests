@@ -12,16 +12,26 @@ struct TitleView: View {
     var body: some View {
         HStack {
             Spacer()
-            AsyncImage(url: URL(string: user.avatarUrl)) { image in
-                   image
-                       .resizable()
-                       .scaledToFill()
-               } placeholder: {
-                   ProgressView()
-               }
-               .frame(width: 60, height: 60)
-               .background(Color.gray)
-               .clipShape(Circle())
+            AsyncImage(
+                url: URL(string: user.avatarUrl),
+                transaction: Transaction(animation: .easeInOut)
+            ) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .transition(.scale(scale: 0.1, anchor: .center))
+                case .failure:
+                    Image(systemName: "wifi.slash")
+                @unknown default:
+                    EmptyView()
+                }
+            }
+            .frame(width: 60, height: 60)
+            .background(Color.gray)
+            .clipShape(Circle())
             Spacer()
             Text(user.name)
             Spacer()
