@@ -13,6 +13,8 @@ struct PullRequestView: View {
         HStack {
             HStack {
                 Text(pullRequest.title)
+                    .frame(height: 30)
+                    .truncationMode(.tail)
                 Spacer()
             }
             .frame(minWidth: 0, maxWidth: .infinity)
@@ -21,6 +23,7 @@ struct PullRequestView: View {
             Text(formatDate(date: pullRequest.closedAt))
                 .frame(minWidth: 0, maxWidth: .infinity)
         }
+        .padding(.vertical, 4.0)
     }
     func formatDate(date: String) -> String {
         let dateFormator = DateFormatter()
