@@ -11,7 +11,6 @@ struct TitleView: View {
     let user: User
     var body: some View {
         HStack {
-            Spacer()
             AsyncImage(
                 url: URL(string: user.avatarUrl),
                 transaction: Transaction(animation: .easeInOut)
@@ -29,12 +28,13 @@ struct TitleView: View {
                     EmptyView()
                 }
             }
-            .frame(width: 60, height: 60)
+            .frame(width: 50, height: 50)
             .background(Color.gray)
             .clipShape(Circle())
-            Spacer()
+            .padding(.horizontal, 10.0)
             Text(user.name)
-            Spacer()
+                .font(.title2)
+                .fontWeight(.semibold)
         }
     }
 }

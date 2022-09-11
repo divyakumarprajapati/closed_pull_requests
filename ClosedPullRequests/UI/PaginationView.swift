@@ -21,6 +21,7 @@ struct PaginationView: View {
                     Text("Previous")
                 }
             )
+            .padding([.leading, .bottom], 10.0)
             .disabled(currentPage == 1)
             .buttonStyle(BorderlessButtonStyle())
             Spacer()
@@ -30,9 +31,11 @@ struct PaginationView: View {
                     Text("Next")
                 }
             )
+            .padding([.bottom, .trailing], 10.0)
             .disabled(currentPageEntriesCount == 0 || currentPageEntriesCount < 10)
             .buttonStyle(BorderlessButtonStyle())
         }
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 
