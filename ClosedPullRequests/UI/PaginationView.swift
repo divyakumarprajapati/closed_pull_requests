@@ -30,7 +30,7 @@ struct PaginationView: View {
                     Text("Next")
                 }
             )
-            .disabled(currentPageEntriesCount == 0)
+            .disabled(currentPageEntriesCount == 0 || currentPageEntriesCount < 10)
             .buttonStyle(BorderlessButtonStyle())
         }
     }
