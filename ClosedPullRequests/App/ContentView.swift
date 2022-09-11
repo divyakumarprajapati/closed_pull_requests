@@ -13,23 +13,24 @@ struct ContentView: View {
     let repoName: String
     @StateObject var pullRequestRepo = PullRequestRepo()
     @StateObject var userRepo = UserRepo()
-    @State var page = 1
+    @State var currentPage = 1
     
     var body: some View {
         List {
-            TitleView(user: userRepo.user, userName: userName)
+            TitleView(user: userRepo.user)
             ForEach(pullRequestRepo.pullRequests, id: \.self.id) { pullRequest in
                 PullRequestView(pullRequest: pullRequest)
             }
-            PaginationView(onNextPressed: {
-                page += 1
-                pullRequestRepo.fetchPullRequests(userName: userName, repoName: repoName, page: page, perPage: perPage)
+            PaginationView(currentPage: self.currentPage, currentPageEntriesCount: pullRequestRepo.pullRequests.count, onNextPressed: {
+                self.currentPage += 1
+                pullRequestRepo.fetchPullRequests(userName: self.userName, repoName: self.repoName, page: self.currentPage, perPage: self.perPage)
             }, onPreviousPressed: {
-                page -= 1
-                pullRequestRepo.fetchPullRequests(userName: userName, repoName: repoName, page: page, perPage: perPage)
+                self.currentPage -= 1
+                pullRequestRepo.fetchPullRequests(userName: self.userName, repoName: self.repoName, page: self.currentPage, perPage: self.perPage)
             })
         }.onAppear {
-            pullRequestRepo.fetchPullRequests(userName: userName, repoName: repoName, page: page, perPage: perPage)
+            userRepo.fetchUser(userName: self.userName)
+            pullRequestRepo.fetchPullRequests(userName: self.userName, repoName: self.repoName, page: self.currentPage, perPage: self.perPage)
         }
     }
 }
