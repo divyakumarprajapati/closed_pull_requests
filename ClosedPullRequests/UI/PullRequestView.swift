@@ -9,18 +9,25 @@ import SwiftUI
 
 struct PullRequestView: View {
     let pullRequest: PullRequest
+    @State var expanded: Bool = false
     var body: some View {
         HStack {
             HStack {
                 Text(pullRequest.title)
-                    .frame(height: 30)
+                    .font(.headline)
+                    .frame(height: expanded ? .infinity : 30)
                     .truncationMode(.tail)
                 Spacer()
             }
+            .onTapGesture(perform: {
+                expanded = !expanded
+            })
             .frame(minWidth: 0, maxWidth: .infinity)
             Text(formatDate(date: pullRequest.createdAt))
+                .font(.subheadline)
                 .frame(minWidth: 0, maxWidth: .infinity)
             Text(formatDate(date: pullRequest.closedAt))
+                .font(.subheadline)
                 .frame(minWidth: 0, maxWidth: .infinity)
         }
         .padding(.vertical, 4.0)
