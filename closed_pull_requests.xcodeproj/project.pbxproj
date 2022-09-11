@@ -16,6 +16,8 @@
 		95ABB2DC28CA5179004D0155 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ABB2B228CA5178004D0155 /* ContentView.swift */; };
 		95ABB2DD28CA5179004D0155 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95ABB2B328CA5179004D0155 /* Assets.xcassets */; };
 		95ABB2DE28CA5179004D0155 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95ABB2B328CA5179004D0155 /* Assets.xcassets */; };
+		95B5BBFA28CE259E00167E5C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5BBF928CE259E00167E5C /* Config.swift */; };
+		95B5BBFB28CE259E00167E5C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5BBF928CE259E00167E5C /* Config.swift */; };
 		95C3EEF228CC8DDF00A86830 /* PullRequestRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C3EEF128CC8DDF00A86830 /* PullRequestRepo.swift */; };
 		95C3EEF428CC96A100A86830 /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C3EEF328CC96A100A86830 /* PullRequest.swift */; };
 		95C3EEFA28CDBFA200A86830 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C3EEF928CDBFA200A86830 /* UserRepo.swift */; };
@@ -51,6 +53,7 @@
 		95ABB2C028CA5179004D0155 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		95ABB2C528CA5179004D0155 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ABB2D128CA5179004D0155 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95B5BBF928CE259E00167E5C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		95C3EEF128CC8DDF00A86830 /* PullRequestRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestRepo.swift; sourceTree = "<group>"; };
 		95C3EEF328CC96A100A86830 /* PullRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequest.swift; sourceTree = "<group>"; };
 		95C3EEF928CDBFA200A86830 /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 			children = (
 				95ABB2B128CA5178004D0155 /* ClosedPullRequestsApp.swift */,
 				95ABB2B228CA5178004D0155 /* ContentView.swift */,
+				95B5BBF928CE259E00167E5C /* Config.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -331,6 +335,7 @@
 				95A0E98F28CA72D700F65AF2 /* PaginationView.swift in Sources */,
 				95C3EEFC28CDBFBD00A86830 /* User.swift in Sources */,
 				95C3EEF228CC8DDF00A86830 /* PullRequestRepo.swift in Sources */,
+				95B5BBFA28CE259E00167E5C /* Config.swift in Sources */,
 				95C3EEFA28CDBFA200A86830 /* UserRepo.swift in Sources */,
 				95A0E98B28CA6C0000F65AF2 /* UserView.swift in Sources */,
 			);
@@ -342,6 +347,7 @@
 			files = (
 				95ABB2DC28CA5179004D0155 /* ContentView.swift in Sources */,
 				95ABB2DA28CA5179004D0155 /* ClosedPullRequestsApp.swift in Sources */,
+				95B5BBFB28CE259E00167E5C /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

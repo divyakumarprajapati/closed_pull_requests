@@ -9,12 +9,9 @@ import SwiftUI
 
 @main
 struct ClosedPullRequestsApp: App {
-    var perPage = 10
-    var userName = "divyakumarprajapati"
-    var repoName = "closed_pull_requests"
     var body: some Scene {
         WindowGroup {
-            ContentView(perPage: perPage, userName: userName, repoName: repoName)
+            ContentView(perPage: Config.perPage, userName: Config.userName, repoName: Config.repoName)
         }
     }
 }

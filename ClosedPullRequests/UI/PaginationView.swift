@@ -32,7 +32,7 @@ struct PaginationView: View {
                 }
             )
             .padding([.bottom, .trailing], 10.0)
-            .disabled(currentPageEntriesCount == 0 || currentPageEntriesCount < 10)
+            .disabled(currentPageEntriesCount == 0 || currentPageEntriesCount < Config.perPage)
             .buttonStyle(BorderlessButtonStyle())
         }
         .fixedSize(horizontal: false, vertical: true)
