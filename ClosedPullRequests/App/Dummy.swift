@@ -16,13 +16,34 @@ struct Dummy: View {
     @State var currentPage = 1
     
     var body: some View {
-        VStack {
+        VStack(alignment: HorizontalAlignment.leading, content: {
             TitleView(user: userRepo.user)
             List {
-                ForEach(pullRequestRepo.pullRequests, id: \.self.id) { pullRequest in
-                    PullRequestView(pullRequest: pullRequest)
-                }
+              Section {
+                  ForEach(pullRequestRepo.pullRequests, id: \.self.id) { pullRequest in
+                     PullRequestView(pullRequest: pullRequest)
+                  }
+              } header: {
+                  HStack {
+                      Text("Closed PR")
+                          .font(.headline)
+                          .fontWeight(.semibold)
+                          .foregroundColor(Color.black)
+                          .frame(minWidth: 0, maxWidth: .infinity)
+                      Text("Created At")
+                          .font(.headline)
+                          .fontWeight(.semibold)
+                          .foregroundColor(Color.black)
+                          .frame(minWidth: 0, maxWidth: .infinity)
+                      Text("Closed At")
+                          .font(.headline)
+                          .fontWeight(.semibold)
+                          .foregroundColor(Color.black)
+                          .frame(minWidth: 0, maxWidth: .infinity)
+                  }
+              }
             }
+            .listStyle(.inset)
             PaginationView(currentPage: self.currentPage, currentPageEntriesCount: pullRequestRepo.pullRequests.count, onNextPressed: {
                 self.currentPage += 1
                 pullRequestRepo.fetchPullRequests(userName: self.userName, repoName: self.repoName, page: self.currentPage, perPage: self.perPage)
@@ -30,11 +51,12 @@ struct Dummy: View {
                 self.currentPage -= 1
                 pullRequestRepo.fetchPullRequests(userName: self.userName, repoName: self.repoName, page: self.currentPage, perPage: self.perPage)
             })
-        }
+        })
         .onAppear {
             userRepo.fetchUser(userName: self.userName)
             pullRequestRepo.fetchPullRequests(userName: self.userName, repoName: self.repoName, page: self.currentPage, perPage: self.perPage)
         }
+        .background(Color.yellow.opacity(0.3))
     }
 }
 
