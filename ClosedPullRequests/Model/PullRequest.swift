@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-struct PullRequestList: Codable {
-    var pullRequestList: [PullRequest]
-}
-
 struct PullRequest: Identifiable, Codable {
     var id: Int
     var title: String
