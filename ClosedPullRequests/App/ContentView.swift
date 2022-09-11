@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var pullRequestRepo = PullRequestRepo()
+    @State var page = 1
+    var perPage = 10
     
     var body: some View {
         List {
@@ -16,8 +18,15 @@ struct ContentView: View {
             ForEach(pullRequestRepo.pullRequests, id: \.self.id) { pullRequest in
                 PullRequestView(pullRequest: pullRequest)
             }
+            PaginationView(onNextPressed: {
+                page += 1
+                pullRequestRepo.fetchPullRequests(page: page, perPage: perPage)
+            }, onPreviousPressed: {
+                page -= 1
+                pullRequestRepo.fetchPullRequests(page: page, perPage: perPage)
+            })
         }.onAppear {
-            pullRequestRepo.fetchPullRequests(page: 1, perPage: 10)
+            pullRequestRepo.fetchPullRequests(page: page, perPage: perPage)
         }
     }
 }
