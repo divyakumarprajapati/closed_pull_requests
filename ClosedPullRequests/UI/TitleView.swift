@@ -12,9 +12,16 @@ struct TitleView: View {
     var body: some View {
         HStack {
             Spacer()
-            Circle()
-                .fill(Color.blue)
-                .frame(width: 50, height: 50)
+            AsyncImage(url: URL(string: user.avatarUrl)) { image in
+                   image
+                       .resizable()
+                       .scaledToFill()
+               } placeholder: {
+                   ProgressView()
+               }
+               .frame(width: 60, height: 60)
+               .background(Color.gray)
+               .clipShape(Circle())
             Spacer()
             Text(user.name)
             Spacer()
